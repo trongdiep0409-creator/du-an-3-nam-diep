@@ -114,15 +114,17 @@ Thiết lập nền tảng dữ liệu cho toàn bộ hành trình học tập.
 
 - Người dùng chưa chọn được trọng tâm hiện tại.
 - Hệ thống hiển thị các mục tiêu từ Career Goals để hỗ trợ lựa chọn.
-- Người dùng vẫn có thể hoàn thành khởi tạo với trạng thái "chưa chọn trọng tâm", hệ thống sẽ nhắc ở bước tạo nhiệm vụ đầu tiên.
+- Career Context vẫn được lưu dưới dạng bản nháp.
+- Onboarding chưa được hoàn thành khi chưa có trọng tâm.
 
-### Điều kiện để hoàn thành khởi tạo
+### Điều kiện để hoàn thành onboarding
 
 - Career Context đã được nhập và lưu.
 - Mục tiêu 1 năm, 2 năm và 3 năm đã xác nhận.
 - Lịch học đã xác nhận.
 - Trạng thái kỹ năng ban đầu đã thiết lập.
-- Tuần đầu tiên đã được tạo.
+- Đã chọn trọng tâm hiện tại.
+- Đã tạo bản nháp Primary Mission đầu tiên.
 
 Không thiết kế form hoặc UI trong Task này.
 
@@ -481,8 +483,20 @@ Cuối ngày phải tạo được:
 
 - Không giả tạo kết luận.
 - Hiển thị dữ liệu còn thiếu.
-- Cho phép hoàn thành review với trạng thái thiếu dữ liệu.
+- Cho phép hoàn thành review với trạng thái Reviewed.
 - Đưa hành động bổ sung dữ liệu vào tuần sau.
+
+### Data Completeness
+
+Weekly Review có thuộc tính nghiệp vụ Data Completeness:
+
+- **Complete**: Tuần có đủ dữ liệu cần thiết cho review.
+- **Incomplete**: Tuần thiếu dữ liệu.
+
+Nếu Data Completeness là Incomplete, phải ghi rõ:
+
+- Dữ liệu còn thiếu.
+- Hành động bổ sung dữ liệu.
 
 ### Bước tiếp theo
 
@@ -503,7 +517,13 @@ Cuối ngày phải tạo được:
 | Submitted | Đã nộp báo cáo | Daily Report nộp | Chờ review | Completed, Needs Rework, Blocked |
 | Completed | Đã hoàn thành | Review kết quả Đạt | Xem lại lịch sử | — |
 | Needs Rework | Cần làm lại | Review kết quả Cần làm lại | Tạo nhiệm vụ làm lại | In Progress |
-| Blocked | Bị chặn | Có blocker | Ghi blocker, gợi ý thay thế | In Progress, Completed |
+| Blocked | Bị chặn | Có blocker | Ghi blocker, gợi ý thay thế | In Progress |
+
+Luồng hợp lệ của Mission Blocked:
+
+Blocked → In Progress → Submitted → Completed sau Review Passed.
+
+Mission chỉ được Completed thông qua review kết quả Đạt. Không có transition trực tiếp Blocked → Completed.
 
 ### Learning Session
 
@@ -539,6 +559,8 @@ Cuối ngày phải tạo được:
 | Active | Đang diễn ra | Tuần bắt đầu | Tạo và thực hiện nhiệm vụ | Review Due |
 | Review Due | Đến hạn review | Ngày review đến | Tạo Weekly Review | Reviewed |
 | Reviewed | Đã review | Weekly Review hoàn tất | Xem kết quả, điều chỉnh Roadmap | — |
+
+Weekly Review có thuộc tính nghiệp vụ Data Completeness: Complete hoặc Incomplete. Không tạo thêm trạng thái Week mới cho trường hợp thiếu dữ liệu.
 
 Không thêm trạng thái nếu không có use case rõ ràng.
 
@@ -703,7 +725,7 @@ Mục tiêu là người dùng luôn biết bước tiếp theo.
 
 - Daily Report ở trạng thái Submitted.
 - Primary Mission ở trạng thái Submitted, chờ review.
-- Supporting Mission hoàn thành phần của nó.
+- Supporting Mission ở trạng thái Submitted và chờ review.
 
 #### Next action
 
