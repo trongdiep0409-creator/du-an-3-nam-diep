@@ -48,7 +48,7 @@ Dự án Titan OS đang ở trạng thái khởi động lại từ đầu.
 
 ## 4. Task Hiện Tại
 
-Task hiện tại chỉ là tạo ngữ cảnh.
+Task 02 — Product Vision đã hoàn thành.
 
 Đã hoàn thành:
 
@@ -59,19 +59,15 @@ Task hiện tại chỉ là tạo ngữ cảnh.
 - Mô tả nguyên tắc sản phẩm
 - Mô tả quy tắc AI Mentor
 - Ghi lại trạng thái hiện tại
+- Tạo Product Vision trong thư mục docs/01-product
 
 ---
 
 ## 5. Task Tiếp Theo
 
-Task tiếp theo dự kiến là viết Product Vision.
+Task tiếp theo dự kiến:
 
-Product Vision sẽ định nghĩa:
-
-- Tầm nhìn sản phẩm
-- Phạm vi sản phẩm
-- Các tính năng cốt lõi
-- Ưu tiên phát triển
+Task 03 — Product Mission, Scope và Success Criteria.
 
 ---
 
