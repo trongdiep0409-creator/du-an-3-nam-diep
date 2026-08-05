@@ -48,7 +48,7 @@ Dự án Titan OS đang ở trạng thái khởi động lại từ đầu.
 
 ## 4. Task Hiện Tại
 
-Task 02 — Product Vision đã hoàn thành.
+Task 03 — Product Scope và Success Criteria đã hoàn thành.
 
 Đã hoàn thành:
 
@@ -60,6 +60,7 @@ Task 02 — Product Vision đã hoàn thành.
 - Mô tả quy tắc AI Mentor
 - Ghi lại trạng thái hiện tại
 - Tạo Product Vision trong thư mục docs/01-product
+- Tạo Product Scope và Success Criteria trong thư mục docs/01-product
 
 ---
 
@@ -67,7 +68,7 @@ Task 02 — Product Vision đã hoàn thành.
 
 Task tiếp theo dự kiến:
 
-Task 03 — Product Mission, Scope và Success Criteria.
+Task 04 — User Journey và Core Product Flow.
 
 ---
 
