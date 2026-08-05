@@ -179,9 +179,9 @@ Chỉ mô tả Product Requirement. Không quyết định định dạng hoặc
 
 ### AI Memory Dài Hạn
 
-- **Vì sao chưa bắt buộc trong MVP**: Cần dữ liệu 3 năm để AI hiểu lịch sử người dùng.
-- **Điều kiện phải đạt trước khi triển khai**: Dữ liệu học tập tích lũy đủ dài và có cấu trúc.
-- **Capability MVP cung cấp dữ liệu đầu vào**: Toàn bộ dữ liệu lịch sử trong MVP.
+- **Vì sao chưa bắt buộc trong MVP**: Không thuộc phạm vi MVP, được triển khai ở giai đoạn sau.
+- **Điều kiện phải đạt trước khi triển khai**: Có thể bắt đầu khi đã có đủ lịch sử có cấu trúc. Chất lượng memory tăng dần theo lượng dữ liệu được tích lũy.
+- **Capability MVP cung cấp dữ liệu đầu vào**: Toàn bộ dữ liệu lịch sử có cấu trúc trong MVP.
 
 ### Tích Hợp Dịch Vụ Ngoài
 
@@ -444,17 +444,17 @@ Nếu không trả lời rõ, tính năng phải được đưa vào Later hoặ
 
 ### Điểm chưa rõ
 
-- Cơ chế đề xuất Daily Mission: Chưa xác định mức độ tự động của việc đề xuất nhiệm vụ — hoàn toàn thủ công, bán tự động hay tự động theo quy tắc.
-- Cơ chế Review Workflow: Chưa xác định rõ trách nhiệm thực hiện review trong giai đoạn đầu khi AI chưa tích hợp — người dùng tự review theo hướng dẫn hay có quy trình đánh giá thủ công.
 - Định dạng cụ thể của Output và Evidence: Chưa xác định cách ghi nhận output và evidence (đường dẫn, mô tả, file đính kèm) — cần làm rõ ở giai đoạn thiết kế.
 - Chi tiết các bước Roadmap: Chưa xác định chi tiết cách chia nhỏ lộ trình 3 năm thành roadmap thực thi.
 
-### Quyết định cần Product Owner xác nhận
+### Quyết định CTO đã được giải quyết
 
-- Mức độ tự động của Daily Mission đề xuất trong MVP.
-- Cách thức thực hiện Review Workflow khi chưa có AI tự động.
-- Tiêu chí đánh giá "đạt" của output ở mức chi tiết.
-- Mức độ chi tiết của Skill Tracking trong MVP.
+- Cơ chế đề xuất Daily Mission: Đã được CTO chốt — Daily Mission hoạt động bán tự động theo quy tắc, không phụ thuộc AI API trong MVP.
+- Cách thức thực hiện Review Workflow: Đã được CTO chốt — Review Workflow hoạt động thủ công có cấu trúc, có thể dùng AI bên ngoài hỗ trợ nhưng không phụ thuộc API.
+- Tiêu chí đánh giá "đạt" của output: Đã được CTO chốt — nhiệm vụ chỉ đánh dấu Đạt khi có đủ output, đủ evidence, đạt mọi tiêu chí hoàn thành và review đã hoàn tất.
+- Mức độ chi tiết của Skill Tracking: Đã được CTO chốt — Skill Tracking dùng ba trạng thái: Chưa bắt đầu, Đang học, Đã chứng minh. Không dùng điểm số, level, ranking hay gamification trong MVP.
+- Cấu trúc nhiệm vụ trong ngày: Đã được CTO chốt — một ngày có đúng một Primary Mission và tối đa hai Supporting Missions.
+- Kết quả review: Đã được CTO chốt — chỉ dùng ba kết quả: Đạt, Cần làm lại, Bị chặn.
 
 ### Mâu thuẫn giữa thứ tự ưu tiên và trải nghiệm cốt lõi
 
@@ -481,6 +481,10 @@ Titan OS MVP là hệ thống giúp một người dùng duy nhất hoàn thành
 - Review Workflow
 - Weekly Review
 - Backup và Export cơ bản
+
+### Should in MVP
+
+- Skill Tracking cơ bản
 
 ### Danh Sách Later
 

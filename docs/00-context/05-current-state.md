@@ -48,7 +48,7 @@ Dự án Titan OS đang ở trạng thái khởi động lại từ đầu.
 
 ## 4. Task Hiện Tại
 
-Task 03 — Product Scope và Success Criteria đã hoàn thành.
+Task 04 — User Journey và Core Product Flow đã hoàn thành.
 
 Đã hoàn thành:
 
@@ -61,6 +61,7 @@ Task 03 — Product Scope và Success Criteria đã hoàn thành.
 - Ghi lại trạng thái hiện tại
 - Tạo Product Vision trong thư mục docs/01-product
 - Tạo Product Scope và Success Criteria trong thư mục docs/01-product
+- Tạo User Journey và Core Product Flow trong thư mục docs/01-product
 
 ---
 
@@ -68,7 +69,7 @@ Task 03 — Product Scope và Success Criteria đã hoàn thành.
 
 Task tiếp theo dự kiến:
 
-Task 04 — User Journey và Core Product Flow.
+Task 05 — Information Architecture và Navigation Model.
 
 ---
 
