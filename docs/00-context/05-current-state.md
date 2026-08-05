@@ -48,7 +48,7 @@ Dự án Titan OS đang ở trạng thái khởi động lại từ đầu.
 
 ## 4. Task Hiện Tại
 
-Task 05 — Information Architecture và Navigation Model đã hoàn thành.
+Task 06 — MVP Screen Inventory và UX Requirements đã hoàn thành.
 
 Đã hoàn thành:
 
@@ -63,6 +63,7 @@ Task 05 — Information Architecture và Navigation Model đã hoàn thành.
 - Tạo Product Scope và Success Criteria trong thư mục docs/01-product
 - Tạo User Journey và Core Product Flow trong thư mục docs/01-product
 - Tạo Information Architecture và Navigation Model trong thư mục docs/01-product
+- Tạo MVP Screen Inventory và UX Requirements trong thư mục docs/01-product
 
 ---
 
@@ -70,7 +71,7 @@ Task 05 — Information Architecture và Navigation Model đã hoàn thành.
 
 Task tiếp theo dự kiến:
 
-Task 06 — MVP Screen Inventory và UX Requirements.
+Task 07 — Product Data Model và Business Rules.
 
 ---
 

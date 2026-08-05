@@ -249,6 +249,12 @@ Reviews gồm:
 3. Weekly Review đến hạn.
 4. Các review khác.
 
+### Pending Review chặn Mission khi
+
+- Mission ở trạng thái Submitted.
+- Review quyết định trạng thái tiếp theo.
+- Daily Close hoặc Next Mission phụ thuộc kết quả review.
+
 ### Dữ liệu cần có trước khi review
 
 - Output được đánh giá.
@@ -273,6 +279,21 @@ Reviews gồm:
 - **Today**: Kết quả review sinh nhiệm vụ ngày sau.
 - **Skill**: Kết quả Đạt cập nhật Skill.
 - **Plan**: Weekly Review điều chỉnh Roadmap.
+
+### Weekly Review Data Completeness
+
+Weekly Review vẫn có trạng thái Reviewed nhưng có thuộc tính Data Completeness:
+
+- **Complete**: Tuần có đủ dữ liệu cần thiết.
+- **Incomplete**: Tuần thiếu dữ liệu.
+
+Khi Incomplete phải ghi:
+
+- Dữ liệu thiếu.
+- Ảnh hưởng tới kết luận.
+- Hành động bổ sung hoặc chấp nhận thiếu dữ liệu.
+
+Không tạo kết luận giả cho phần thiếu dữ liệu.
 
 Không biến Reviews thành AI Chat trong Task này.
 
@@ -300,13 +321,15 @@ Trạng thái:
 
 ### Progress History
 
-Chỉ chứa lịch sử cần thiết để:
+Progress History MVP chỉ chứa:
 
-- Biết kỹ năng đã thay đổi thế nào.
-- Biết evidence nào chứng minh kỹ năng.
-- Biết điểm yếu nào đang lặp lại.
+- Skill status changes: Thay đổi trạng thái kỹ năng.
+- Evidence làm căn cứ: Evidence được dùng làm căn cứ cho thay đổi.
+- Review nguồn: Review dẫn đến thay đổi trạng thái.
+- Điểm yếu lặp lại: Điểm yếu được ghi nhận nhiều lần.
+- Thời điểm thay đổi: Thời gian xảy ra thay đổi.
 
-Không thêm:
+Không có Analytics nâng cao. Không thêm:
 
 - Career Score.
 - Ranking.
@@ -378,13 +401,19 @@ Không mô tả công nghệ backup trong Task này.
 | Learning Session | Today | Reviews | Người dùng tạo | Người dùng sửa | Có |
 | Daily Report | Today | Reviews | Người dùng tạo | Người dùng sửa (giữ lịch sử) | Có |
 | Output | Today | Reviews, Progress | Người dùng tạo | Người dùng sửa | Có |
-| Evidence | Today | Reviews, Progress | Người dùng tạo | Người dùng sửa | Có |
+| Evidence | Progress | Today, Reviews | Người dùng tạo tại Today | Người dùng sửa tại Today | Có |
 | Review | Reviews | Today, Progress | Người dùng thực hiện | Người dùng sửa (giữ lịch sử) | Có |
 | Skill | Progress | Reviews, Plan | Hệ thống tạo từ Career Context | Hệ thống cập nhật sau review | Có |
 | Weekly Review | Reviews | Plan, Progress | Người dùng tạo | Người dùng sửa | Có |
 | Backup Record | Settings & Data | — | Hệ thống tạo | — | Có |
 
 Mỗi object chỉ có một khu vực sở hữu chính.
+
+### Ghi chú về Evidence
+
+- **Progress giữ bản ghi Evidence chuẩn**: Progress là nguồn sự thật của Evidence.
+- **Today chỉ tạo hoặc liên kết Evidence**: Người dùng tạo Evidence tại Today, nhưng bản ghi chuẩn nằm ở Progress.
+- **Reviews không tạo bản sao Evidence**: Reviews chỉ kiểm tra và tham chiếu Evidence từ Progress.
 
 ---
 
@@ -433,7 +462,11 @@ Không biến mọi object thành mục navigation cấp cao.
 
 Titan OS có khái niệm Product-level: Next Action.
 
-Next Action được xác định theo thứ tự ưu tiên:
+### Onboarding Gate
+
+Nếu onboarding chưa hoàn thành, Complete Onboarding là Primary Next Action bắt buộc. Danh sách ưu tiên thông thường chỉ áp dụng sau khi onboarding hoàn tất.
+
+### Thứ tự ưu tiên (sau khi onboarding hoàn tất)
 
 1. Tiếp tục Active Learning Session.
 2. Hoàn thành Draft Daily Report.
@@ -444,7 +477,6 @@ Next Action được xác định theo thứ tự ưu tiên:
 7. Bắt đầu Primary Mission.
 8. Hoàn thành Weekly Review đến hạn.
 9. Chuẩn bị tuần mới.
-10. Hoàn thành onboarding.
 
 ### Phân tích trường hợp nhiều hành động cùng tồn tại
 
@@ -569,7 +601,7 @@ Task tiếp theo dự kiến: Task 06 — MVP Screen Inventory và UX Requiremen
 
 ### Object có nguy cơ xuất hiện ở quá nhiều nơi
 
-- Evidence xuất hiện ở Today, Reviews, Progress. Cần giữ nguồn sự thật ở Today, các nơi khác chỉ tham chiếu.
+- Evidence xuất hiện ở Today, Reviews, Progress. Progress giữ bản ghi chuẩn, Today tạo hoặc liên kết, Reviews chỉ tham chiếu.
 
 ### Khu vực có nguy cơ trở thành Dashboard thụ động
 
@@ -605,7 +637,8 @@ Không tự thêm capability để giải quyết vấn đề.
 
 ### Primary Next Action
 
-- Được xác định theo thứ tự ưu tiên 10 bước trong Mục 13. Chỉ một hành động là Primary Next Action tại mỗi thời điểm.
+- Nếu onboarding chưa hoàn thành, Complete Onboarding là Primary Next Action bắt buộc.
+- Sau khi onboarding hoàn tất, được xác định theo thứ tự ưu tiên 9 bước trong Mục 13. Chỉ một hành động là Primary Next Action tại mỗi thời điểm.
 
 ### Nguồn sự thật của từng object chính
 
@@ -616,7 +649,7 @@ Không tự thêm capability để giải quyết vấn đề.
 - Learning Session: Today.
 - Daily Report: Today.
 - Output: Today.
-- Evidence: Today.
+- Evidence: Progress.
 - Review: Reviews.
 - Skill: Progress.
 - Weekly Review: Reviews.
