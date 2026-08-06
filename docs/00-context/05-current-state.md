@@ -48,7 +48,7 @@ Dự án Titan OS đang ở trạng thái khởi động lại từ đầu.
 
 ## 4. Task Hiện Tại
 
-Task 06 — MVP Screen Inventory và UX Requirements đã hoàn thành.
+Task 07 — Product Data Model và Business Rules đã hoàn thành.
 
 Đã hoàn thành:
 
@@ -64,6 +64,8 @@ Task 06 — MVP Screen Inventory và UX Requirements đã hoàn thành.
 - Tạo User Journey và Core Product Flow trong thư mục docs/01-product
 - Tạo Information Architecture và Navigation Model trong thư mục docs/01-product
 - Tạo MVP Screen Inventory và UX Requirements trong thư mục docs/01-product
+- Cập nhật MVP Screen Inventory với quy tắc chỉnh sửa Mission, revision Daily Report, Pending Review/Needs Rework, Settings & Data luôn truy cập, Skill/Evidence Detail giữ riêng, Acceptance Criteria Matrix 14 view
+- Tạo Product Data Model and Business Rules trong thư mục docs/02-product-model với 19 canonical business objects, 4 supporting records, 7 state transition matrices, 25 business rules, relationship map, invariants, derived information, end-to-end data trace, revision/archive rules, open questions và risks
 
 ---
 
@@ -71,7 +73,7 @@ Task 06 — MVP Screen Inventory và UX Requirements đã hoàn thành.
 
 Task tiếp theo dự kiến:
 
-Task 07 — Product Data Model và Business Rules.
+Task 08 — MVP Functional Requirements và Acceptance Criteria.
 
 ---
 

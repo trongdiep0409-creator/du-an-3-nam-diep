@@ -50,7 +50,7 @@ Tài liệu này dùng để:
 
 | ID | Tên tạm thời | Loại view | Khu vực sở hữu | User goal | Primary action | Entry condition | Exit result |
 |---|---|---|---|---|---|---|---|
-| V01 | Onboarding | Task Flow | Settings & Data | Hoàn thành khởi tạo | Nhập Career Context, chọn trọng tâm, tạo Mission đầu tiên | Chưa có Career Context | Onboarding hoàn thành, vào Today |
+| V01 | Onboarding | Task Flow | Settings & Data | Hoàn thành khởi tạo | Nhập Career Context, chọn trường tâm, tạo Mission đầu tiên | Onboarding chưa hoàn thành | Onboarding hoàn thành, vào Today |
 | V02 | Today Workspace | Top-level Workspace | Today | Biết hôm nay cần làm gì | Xác nhận Mission, bắt đầu phiên, nộp báo cáo | Onboarding hoàn thành | Daily Report Submitted |
 | V03 | Mission Detail | Detail View | Today | Xem và xác nhận nhiệm vụ | Sửa và xác nhận Mission | Có Mission Draft hoặc Ready | Mission Ready |
 | V04 | Learning Session Flow | Task Flow | Today | Ghi phiên học | Bắt đầu, ghi, kết thúc phiên | Mission Ready | Session Completed |
@@ -63,7 +63,7 @@ Tài liệu này dùng để:
 | V11 | Progress Workspace | Top-level Workspace | Progress | Xem kỹ năng và evidence | Xem trạng thái kỹ năng, evidence | Onboarding hoàn thành | Người dùng biết bước tiếp theo |
 | V12 | Skill Detail | Detail View | Progress | Xem chi tiết kỹ năng | Xem evidence, review nguồn | Có Skill | Biết kỹ năng đang ở đâu |
 | V13 | Evidence Detail | Detail View | Progress | Xem chi tiết bằng chứng | Xem evidence và liên kết | Có Evidence | Biết evidence chứng minh gì |
-| V14 | Settings & Data Workspace | Top-level Workspace | Settings & Data | Quản lý hồ sơ và dữ liệu | Sửa hồ sơ, backup, restore, export | Onboarding hoàn thành | Career Context/Data cập nhật |
+| V14 | Settings & Data Workspace | Top-level Workspace | Settings & Data | Quản lý hồ sơ và dữ liệu | Sửa hồ sơ, backup, restore, export | Luôn truy cập được | Career Context/Data cập nhật |
 
 Tổng cộng: 14 canonical view. Không vượt quá giới hạn.
 
@@ -72,12 +72,12 @@ Tổng cộng: 14 canonical view. Không vượt quá giới hạn.
 ## 5. Onboarding UX Requirements
 
 - **User goal**: Thiết lập nền tảng dữ liệu cho toàn bộ hành trình.
-- **Các bước**: Nhập Career Context, xác nhận mục tiêu, nhập điểm mạnh/yếu, xác nhận lịch học, chọn trọng tâm, thiết lập Skill ban đầu, tạo tuần đầu tiên, tạo bản nháp Primary Mission.
-- **Dữ liệu tối thiểu**: Career Context, mục tiêu, lịch học, trọng tâm, trạng thái Skill.
+- **Các bước**: Nhập Career Context, xác nhận mục tiêu, nhập điểm mạnh/yếu, xác nhận lịch học, chọn trường tâm, thiết lập Skill ban đầu, tạo tuần đầu tiên, tạo bản nháp Primary Mission.
+- **Dữ liệu tối thiểu**: Career Context, mục tiêu, lịch học, trường tâm, trạng thái Skill.
 - **Draft behavior**: Dữ liệu đã nhập được lưu nháp, có thể tiếp tục sau.
 - **Resume behavior**: Hiển thị bước còn thiếu, tiếp tục từ điểm dở.
 - **Validation**: Yêu cầu đầy đủ các trường bắt buộc trước khi hoàn thành.
-- **Trường hợp chưa biết trọng tâm**: Career Context lưu nháp, onboarding chưa hoàn thành.
+- **Trường hợp chưa biết trường tâm**: Career Context lưu nháp, onboarding chưa hoàn thành.
 - **Điều kiện hoàn thành**: Career Context đủ, mục tiêu xác nhận, lịch học xác nhận, có Skill ban đầu, có Current Focus, có bản nháp Primary Mission đầu tiên.
 - **Primary Next Action sau onboarding**: Xác nhận Daily Mission đầu tiên.
 
@@ -88,7 +88,7 @@ Tổng cộng: 14 canonical view. Không vượt quá giới hạn.
 | Trạng thái | Thông tin cần thấy | Primary action | Secondary action | Không được phép | Next state |
 |---|---|---|---|---|---|
 | Onboarding incomplete | Nhắc hoàn thành onboarding | Complete Onboarding | — | Tạo Mission | Onboarding hoàn thành |
-| No Mission | Trọng tâm hiện tại | Tạo Daily Mission | Xem Plan | Bắt đầu phiên | Mission Draft |
+| No Mission | Trường tâm hiện tại | Tạo Daily Mission | Xem Plan | Bắt đầu phiên | Mission Draft |
 | Mission Draft | Mission chưa xác nhận | Xác nhận Mission | Sửa Mission | Bắt đầu phiên | Mission Ready |
 | Mission Ready | Mission đã sẵn sàng | Bắt đầu Learning Session | Sửa Mission | Nộp báo cáo | Active Session |
 | Active Session | Phiên đang diễn ra | Tiếp tục/Kết thúc phiên | Ghi khó khăn | Nộp báo cáo | Session Completed |
@@ -118,7 +118,16 @@ Không mô tả layout.
 - **Review liên quan**: Kết quả review.
 - **History**: Lịch sử thay đổi.
 
-Mission được sửa khi ở trạng thái Draft. Mission bị khóa khi ở trạng thái Submitted trở đi. Mission Completed chỉ xảy ra sau Review Passed.
+Quy tắc chỉnh sửa Mission:
+
+- **Draft**: được sửa trực tiếp.
+- **Ready và chưa có Learning Session**: có thể Reopen to Draft để sửa.
+- **In Progress, Submitted, Completed, Needs Rework hoặc Blocked**: không sửa trực tiếp định nghĩa Mission.
+- **Rework phải tạo Attempt mới** hoặc tiếp tục theo quy tắc Rework.
+- **History phải được giữ**.
+- **Không cho phép ghi đè Mission cũ**.
+
+Mission Completed chỉ xảy ra sau Review Passed.
 
 ---
 
@@ -147,9 +156,8 @@ Không biến thành timer phức tạp.
 - **Khó khăn**: Ghi khó khăn gặp phải.
 - **Tự đánh giá**: Người dùng tự đánh giá.
 - **Validation trước khi Submit**: Kiểm tra output và evidence bắt buộc.
-- **Chỉnh sửa sau Submit**: Cho phép sửa, giữ lịch sử.
+- **Chỉnh sửa sau Submit**: Không được ghi đè bản đã Submit. Được tạo revision mới. Revision phải giữ liên kết với bản trước. Nếu báo cáo đã được review, revision mới tạo Pending Review mới. Review cũ vẫn được giữ trong history.
 - **History**: Lưu lịch sử chỉnh sửa.
-- **Review lại sau khi sửa dữ liệu đã review**: Đánh dấu cần review lại.
 
 Không quyết định cơ chế lưu kỹ thuật.
 
@@ -218,6 +226,13 @@ Kết quả chỉ có: Passed, Rework, Blocked.
 
 Phải có UX rõ cho review thủ công có cấu trúc. Không biến thành AI chat.
 
+### Pending Review và Needs Rework
+
+- Một Mission Attempt không thể vừa Pending Review vừa Needs Rework.
+- Pending Review nghĩa là chưa có kết quả review.
+- Needs Rework nghĩa là review đã kết thúc với kết quả Rework.
+- Nếu thuộc các Mission khác nhau, Pending Review đang chặn được ưu tiên trước.
+
 ---
 
 ## 12. Weekly Review Requirements
@@ -269,13 +284,25 @@ Progress phải dẫn đến hành động: Xem Evidence, Xem Review nguồn, Đ
 
 Không thêm score, level, ranking hoặc chart nâng cao.
 
+### Quyết định: Skill Detail và Evidence Detail giữ riêng biệt
+
+- **Skill Detail**: giữ riêng. Tổng hợp trạng thái năng lực, liên kết Evidence và Review nguồn, và history.
+- **Evidence Detail**: giữ riêng. Mô tả một bằng chứng cụ thể, trạng thái hợp lệ, Skill được chứng minh, Mission nguồn, Review xác nhận, history.
+- **Không hợp nhất trong MVP**.
+
+Lý do:
+
+- Skill Detail tổng hợp trạng thái năng lực — mỗi Skill có thể gắn nhiều Evidence và nhiều Review.
+- Evidence Detail mô tả một bằng chứng cụ thể — mỗi Evidence chỉ gắn với một Skill và một Attempt cụ thể.
+- Hai view phục vụ user goal khác nhau: Skill Detail trả lời "kỹ năng này đang ở đâu?", Evidence Detail trả lời "bằng chứng này chứng minh gì?".
+
 ---
 
 ## 14. Settings & Data Requirements
 
-- **Career Context**: Hồ sơ, điểm mạnh, điểm yếu, mục tiêu, lịch học, trọng tâm.
+- **Career Context**: Hồ sơ, điểm mạnh, điểm yếu, mục tiêu, lịch học, trường tâm.
 - **Career Goals**: Mục tiêu 1, 2, 3 năm.
-- **Current Focus**: Trọng tâm hiện tại.
+- **Current Focus**: Trường tâm hiện tại.
 - **Lịch học**: Khung giờ và phân bổ.
 - **Backup**: Tạo bản sao dữ liệu.
 - **Restore**: Phục hồi dữ liệu.
@@ -285,6 +312,12 @@ Không thêm score, level, ranking hoặc chart nâng cao.
 - **Restore recovery**: Đưa người dùng tới Primary Next Action hợp lệ.
 
 Sửa Current Focus phải cảnh báo ảnh hưởng tới Plan và Today. Restore phải đưa người dùng tới Primary Next Action hợp lệ.
+
+### Settings & Data luôn có thể truy cập
+
+- **Trước khi onboarding hoàn thành**: người dùng truy cập Settings & Data để hoàn thành các phần phục vụ onboarding (Career Context, Current Focus, lịch học).
+- **Sau onboarding**: người dùng có thể sử dụng toàn bộ Career Context và Data Management.
+- **Không yêu cầu onboarding hoàn thành mới được vào Settings & Data.**
 
 ---
 
@@ -321,7 +354,7 @@ Mọi view phải có trạng thái phù hợp. Không ép mọi view phải có
 | Missing Completion Criteria | Không có tiêu chí | Mission cần tiêu chí hoàn thành | Thêm tiêu chí | Có |
 | Conflicting Primary Mission | Hai Mission cùng Primary | Chỉ một Primary Mission mỗi ngày | Chọn một Primary | Có |
 | Session still Active | Phiên chưa kết thúc | Phiên đang diễn ra | Kết thúc hoặc bỏ dở | Có |
-| Report already Submitted | Báo cáo đã nộp | Báo cáo đã nộp, không thể nộp lại | Sửa báo cáo (giữ lịch sử) | Có |
+| Report already Submitted | Báo cáo đã nộp | Báo cáo đã nộp, tạo revision mới | Tạo revision (giữ lịch sử) | Có |
 | Review dependency | Review chưa hoàn thành chặn Mission | Mission chờ review | Hoàn thành review | Có |
 | Restore conflict | Dữ liệu restore xung đột | Xung đột dữ liệu restore | Chọn giữ hoặc ghi đè | Có |
 
@@ -388,18 +421,24 @@ Mọi view truy vết được về Product Vision, MVP Flow, Information Archit
 
 ---
 
-## 20. Screen Acceptance Criteria
+## 20. Screen Acceptance Criteria Matrix
 
-Với từng canonical view:
-
-- **Người dùng biết mình đang ở đâu**: Tên và ngữ cảnh view rõ ràng.
-- **Người dùng biết hành động chính**: Primary action hiển thị rõ.
-- **Trạng thái hiện tại rõ ràng**: Trạng thái Mission/Session/Report/Review hiển thị.
-- **Dữ liệu đã nhập được giữ**: Draft và autosave giữ dữ liệu.
-- **Có đường khôi phục**: Có cách tiếp tục công việc bỏ dở.
-- **Có kết quả quan sát được**: Mỗi hành động dẫn đến kết quả quan sát được.
-
-Không viết test kỹ thuật.
+| View | Observable Success |
+|---|---|
+| V01 Onboarding | Career Context được lưu, trường tâm được chọn, bản nháp Primary Mission đầu tiên được tạo. Người dùng có thể vào Today. |
+| V02 Today Workspace | Primary Mission hiển thị đúng, trạng thái Mission/Session/Report hiện tại rõ ràng, Daily Report Submitted khi người dùng nộp. |
+| V03 Mission Detail | Mission có mục tiêu, output, evidence, tiêu chí đầy đủ. Xác nhận Mission chuyển sang Ready. |
+| V04 Learning Session Flow | Session ghi thời gian bắt đầu/kết thúc, nội dung, kết quả. Session Completed khi kết thúc. |
+| V05 Daily Report Flow | Daily Report ghi output, evidence, khó khăn, tự đánh giá. Daily Report Submitted khi nộp. |
+| V06 Plan Workspace | Mục tiêu 1/2/3 năm, trường tâm, kết quả đang hướng tới và Roadmap history hiển thị. |
+| V07 Week Plan Flow | Primary Focus, output, evidence, khung Mission và rework tồn đọng được lên kế hoạch. Week Plan sẵn sàng khi xác nhận. |
+| V08 Review Queue | Pending Review, Needs Rework và Weekly Review đến hạn hiển thị đúng thứ tự ưu tiên. |
+| V09 Review Detail | Output, evidence, tiêu chí, lý do, điểm yếu, hành động tiếp theo hiển thị. Kết quả review được ghi là Passed/Rework/Blocked. |
+| V10 Weekly Review Flow | Mission, Session, output, evidence tổng hợp đúng. Data Completeness được ghi. Weekly Review Reviewed. |
+| V11 Progress Workspace | Trạng thái Skill cập nhật đúng (Chưa bắt đầu/Đang học/Đã chứng minh). Evidence và điểm yếu lặp lại hiển thị. |
+| V12 Skill Detail | Skill hiển thị trạng thái, Evidence xác nhận, Review nguồn, điểm yếu và history. |
+| V13 Evidence Detail | Evidence hiển thị trạng thái hợp lệ, Skill liên quan, Mission nguồn, Review xác nhận và history. |
+| V14 Settings & Data Workspace | Career Context và Data Management (backup/restore/export) hiển thị. Career Context cập nhật sau khi sửa. |
 
 ---
 
@@ -407,7 +446,7 @@ Không viết test kỹ thuật.
 
 ### View còn có thể hợp nhất
 
-- Skill Detail và Evidence Detail có thể hợp nhất nếu user goal đủ gần. Cần CTO xác nhận.
+- (Đã quyết định) Skill Detail và Evidence Detail giữ riêng biệt trong MVP. Xem Mục 13.
 
 ### View có nguy cơ quá tải
 
@@ -415,13 +454,12 @@ Không viết test kỹ thuật.
 
 ### State có nguy cơ mâu thuẫn
 
-- Pending Review blocking và Needs Rework có thể cùng tồn tại. Cần xác định rõ ưu tiên.
+- (Đã quyết định) Pending Review và Needs Rework không cùng tồn tại trên một Mission Attempt. Nếu thuộc Mission khác nhau, Pending Review được ưu tiên. Xem Mục 11.
 
 ### UX requirement cần Product Owner xác nhận
 
 - Mức độ chi tiết của Progress History hiển thị trong Progress Workspace.
 - Cách hiển thị Data Completeness Incomplete trong Weekly Review.
-- Có nên hợp nhất Skill Detail và Evidence Detail không.
 
 ### Dữ liệu mà Product Data Model cần hỗ trợ
 
