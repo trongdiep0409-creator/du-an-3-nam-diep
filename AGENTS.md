@@ -204,7 +204,13 @@ titan-os/
 
 TypeScript path alias đã được cấu hình:
 
-"'*'" (see below for file content): ["./src/*"]
+```json
+{
+  "paths": {
+    "'*'": ["./src/*"]
+  }
+}
+```
 
 Sử dụng `import { something } from '@/components/...'` thay vì relative path.
 
