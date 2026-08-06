@@ -94,17 +94,31 @@
 
 ## 8. Tổng Quan Roadmap 50 Task
 
-- **Task 01-07**: Product Definition (đã hoàn thành)
-  - Task 01: Foundation Baseline (đang thực hiện)
-  - Task 02-07: Product context, vision, scope, user journey, IA, screen inventory, data model
-- **Task 08-14**: Technical Foundation
-- **Task 15-21**: Core Features — Daily Loop
-- **Task 22-28**: Core Features — Weekly Loop
-- **Task 29-35**: AI Mentor Integration
-- **Task 36-42**: Analytics và Reporting
-- **Task 43-50**: Polish, Testing và Deployment
+- **S01 Foundation** — 5 Task
+  - S01-T01: Foundation Baseline (đang thực hiện)
+  - S01-T02: Type Safety & Config
+  - S01-T03: Component Foundation
+  - S01-T04: State Management Setup
+  - S01-T05: Data Layer Foundation
+- **S02 Career Core** — 5 Task
+- **S03 Roadmap Engine** — 4 Task
+- **S04 Skill** — 5 Task
+- **S05 Learning** — 4 Task
+- **S06 Knowledge** — 4 Task
+- **S07 Project** — 4 Task
+- **S08 Analytics** — 4 Task
+- **S09 AI Ready** — 4 Task
+- **S10 AI Mentor** — 4 Task
+- **S11 Automation** — 4 Task
+- **S12 Production** — 3 Task
 
-Chi tiết từng task được định nghĩa trong tài liệu sản phẩm trong thư mục `docs/`.
+**Lưu ý quan trọng**:
+- Các tài liệu trong `docs/00-context/`, `docs/01-product/`, `docs/02-product-model/` là tài liệu Product Discovery tiền đề.
+- Chúng không được tính là Task trong roadmap triển khai.
+- Roadmap triển khai bắt đầu từ S01-T01.
+- Chi tiết từng Sprint được định nghĩa trong tài liệu sản phẩm.
+
+Tổng cộng: 50 Task.
 
 ---
 
@@ -131,10 +145,13 @@ npm run typecheck
 
 ## 10. Trạng Thái Triển Khai Hiện Tại
 
-- **Giai đoạn**: Foundation Baseline (Task S01-T01)
+- **Giai đoạn**: S01 Foundation — Sprint 1
+- **Task hiện tại**: S01-T01/50 — Foundation Baseline
+- **Trạng thái**: Đã triển khai, đang thực hiện correction trước CTO approval
 - **Nhánh**: main
-- **Đã có**: Tài liệu sản phẩm đầy đủ trong `docs/`
-- **Đang xây**: Next.js 15 foundation với TypeScript, Tailwind CSS, ESLint
+- **Đã có**: Foundation Next.js 15 + TypeScript + Tailwind CSS + ESLint
+- **Đang xây**: Correction và hardening foundation
+- **Tiếp theo**: Chưa mở task tiếp theo
 - **Chưa có**: Database, authentication, business logic, UI components
 
 ---
@@ -187,13 +204,7 @@ titan-os/
 
 TypeScript path alias đã được cấu hình:
 
-```json
-{
-  "paths": {
-    "*": ["./src/*"]
-  }
-}
-```
+"'*'" (see below for file content): ["./src/*"]
 
 Sử dụng `import { something } from '@/components/...'` thay vì relative path.
 
@@ -218,6 +229,7 @@ Sử dụng `import { something } from '@/components/...'` thay vì relative pat
 - Chưa tạo authentication
 - Chưa triển khai feature nghiệp vụ
 - Chỉ tạo trang chủ tối thiểu với tên, mô tả và trạng thái Foundation
+- Product Discovery documents (docs/) là tài liệu tiền đề, không phải implementation tasks
 
 ---
 
