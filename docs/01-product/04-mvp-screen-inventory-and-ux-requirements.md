@@ -50,7 +50,7 @@ Tài liệu này dùng để:
 
 | ID | Tên tạm thời | Loại view | Khu vực sở hữu | User goal | Primary action | Entry condition | Exit result |
 |---|---|---|---|---|---|---|---|
-| V01 | Onboarding | Task Flow | Settings & Data | Hoàn thành khởi tạo | Nhập Career Context, chọn trường tâm, tạo Mission đầu tiên | Onboarding chưa hoàn thành | Onboarding hoàn thành, vào Today |
+| V01 | Onboarding | Task Flow | Settings & Data | Hoàn thành khởi tạo | Nhập Career Context, chọn trọng tâm, tạo Mission đầu tiên | Onboarding chưa hoàn thành | Onboarding hoàn thành, vào Today |
 | V02 | Today Workspace | Top-level Workspace | Today | Biết hôm nay cần làm gì | Xác nhận Mission, bắt đầu phiên, nộp báo cáo | Onboarding hoàn thành | Daily Report Submitted |
 | V03 | Mission Detail | Detail View | Today | Xem và xác nhận nhiệm vụ | Sửa và xác nhận Mission | Có Mission Draft hoặc Ready | Mission Ready |
 | V04 | Learning Session Flow | Task Flow | Today | Ghi phiên học | Bắt đầu, ghi, kết thúc phiên | Mission Ready | Session Completed |
@@ -72,12 +72,12 @@ Tổng cộng: 14 canonical view. Không vượt quá giới hạn.
 ## 5. Onboarding UX Requirements
 
 - **User goal**: Thiết lập nền tảng dữ liệu cho toàn bộ hành trình.
-- **Các bước**: Nhập Career Context, xác nhận mục tiêu, nhập điểm mạnh/yếu, xác nhận lịch học, chọn trường tâm, thiết lập Skill ban đầu, tạo tuần đầu tiên, tạo bản nháp Primary Mission.
-- **Dữ liệu tối thiểu**: Career Context, mục tiêu, lịch học, trường tâm, trạng thái Skill.
+- **Các bước**: Nhập Career Context, xác nhận mục tiêu, nhập điểm mạnh/yếu, xác nhận lịch học, chọn trọng tâm, thiết lập Skill ban đầu, tạo tuần đầu tiên, tạo bản nháp Primary Mission.
+- **Dữ liệu tối thiểu**: Career Context, mục tiêu, lịch học, trọng tâm, trạng thái Skill.
 - **Draft behavior**: Dữ liệu đã nhập được lưu nháp, có thể tiếp tục sau.
 - **Resume behavior**: Hiển thị bước còn thiếu, tiếp tục từ điểm dở.
 - **Validation**: Yêu cầu đầy đủ các trường bắt buộc trước khi hoàn thành.
-- **Trường hợp chưa biết trường tâm**: Career Context lưu nháp, onboarding chưa hoàn thành.
+- **Trường hợp chưa biết trọng tâm**: Career Context lưu nháp, onboarding chưa hoàn thành.
 - **Điều kiện hoàn thành**: Career Context đủ, mục tiêu xác nhận, lịch học xác nhận, có Skill ban đầu, có Current Focus, có bản nháp Primary Mission đầu tiên.
 - **Primary Next Action sau onboarding**: Xác nhận Daily Mission đầu tiên.
 
@@ -88,7 +88,7 @@ Tổng cộng: 14 canonical view. Không vượt quá giới hạn.
 | Trạng thái | Thông tin cần thấy | Primary action | Secondary action | Không được phép | Next state |
 |---|---|---|---|---|---|
 | Onboarding incomplete | Nhắc hoàn thành onboarding | Complete Onboarding | — | Tạo Mission | Onboarding hoàn thành |
-| No Mission | Trường tâm hiện tại | Tạo Daily Mission | Xem Plan | Bắt đầu phiên | Mission Draft |
+| No Mission | Trọng tâm hiện tại | Tạo Daily Mission | Xem Plan | Bắt đầu phiên | Mission Draft |
 | Mission Draft | Mission chưa xác nhận | Xác nhận Mission | Sửa Mission | Bắt đầu phiên | Mission Ready |
 | Mission Ready | Mission đã sẵn sàng | Bắt đầu Learning Session | Sửa Mission | Nộp báo cáo | Active Session |
 | Active Session | Phiên đang diễn ra | Tiếp tục/Kết thúc phiên | Ghi khó khăn | Nộp báo cáo | Session Completed |
@@ -300,9 +300,9 @@ Lý do:
 
 ## 14. Settings & Data Requirements
 
-- **Career Context**: Hồ sơ, điểm mạnh, điểm yếu, mục tiêu, lịch học, trường tâm.
+- **Career Context**: Hồ sơ, điểm mạnh, điểm yếu, mục tiêu, lịch học, trọng tâm.
 - **Career Goals**: Mục tiêu 1, 2, 3 năm.
-- **Current Focus**: Trường tâm hiện tại.
+- **Current Focus**: Trọng tâm hiện tại.
 - **Lịch học**: Khung giờ và phân bổ.
 - **Backup**: Tạo bản sao dữ liệu.
 - **Restore**: Phục hồi dữ liệu.
@@ -425,12 +425,12 @@ Mọi view truy vết được về Product Vision, MVP Flow, Information Archit
 
 | View | Observable Success |
 |---|---|
-| V01 Onboarding | Career Context được lưu, trường tâm được chọn, bản nháp Primary Mission đầu tiên được tạo. Người dùng có thể vào Today. |
+| V01 Onboarding | Career Context được lưu, trọng tâm được chọn, bản nháp Primary Mission đầu tiên được tạo. Người dùng có thể vào Today. |
 | V02 Today Workspace | Primary Mission hiển thị đúng, trạng thái Mission/Session/Report hiện tại rõ ràng, Daily Report Submitted khi người dùng nộp. |
 | V03 Mission Detail | Mission có mục tiêu, output, evidence, tiêu chí đầy đủ. Xác nhận Mission chuyển sang Ready. |
 | V04 Learning Session Flow | Session ghi thời gian bắt đầu/kết thúc, nội dung, kết quả. Session Completed khi kết thúc. |
 | V05 Daily Report Flow | Daily Report ghi output, evidence, khó khăn, tự đánh giá. Daily Report Submitted khi nộp. |
-| V06 Plan Workspace | Mục tiêu 1/2/3 năm, trường tâm, kết quả đang hướng tới và Roadmap history hiển thị. |
+| V06 Plan Workspace | Mục tiêu 1/2/3 năm, trọng tâm, kết quả đang hướng tới và Roadmap history hiển thị. |
 | V07 Week Plan Flow | Primary Focus, output, evidence, khung Mission và rework tồn đọng được lên kế hoạch. Week Plan sẵn sàng khi xác nhận. |
 | V08 Review Queue | Pending Review, Needs Rework và Weekly Review đến hạn hiển thị đúng thứ tự ưu tiên. |
 | V09 Review Detail | Output, evidence, tiêu chí, lý do, điểm yếu, hành động tiếp theo hiển thị. Kết quả review được ghi là Passed/Rework/Blocked. |

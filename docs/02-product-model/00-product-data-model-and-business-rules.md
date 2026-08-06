@@ -33,7 +33,7 @@ Tài liệu này dùng để:
 
 | Object | Ý nghĩa | Khu vực sở hữu | Được tạo bởi | Lifecycle chính | History |
 |---|---|---|---|---|---|
-| Career Context | Hồ sơ nghề nghiệp: hồ sơ, điểm mạnh/yếu, lịch học, mục tiêu, trường tâm, trạng thái onboarding | Settings & Data | Người dùng | Draft → Completed (onboarding) | Có |
+| Career Context | Hồ sơ nghề nghiệp: hồ sơ, điểm mạnh/yếu, lịch học, mục tiêu, trọng tâm, trạng thái onboarding | Settings & Data | Người dùng | Draft → Completed (onboarding) | Có |
 | Career Goal | Mục tiêu 1 năm, 2 năm, 3 năm | Settings & Data | Người dùng | Draft → Active | Có |
 | Current Focus | Trọng tâm học tập đang hoạt động | Settings & Data | Người dùng | Active → Archived (chuyển focus) | Có |
 | Roadmap | Định hướng học tập hiện hành | Plan | Hệ thống (từ Career Context) | Active → Archived | Có |
@@ -565,11 +565,11 @@ Ngoài ra:
 | BR-001 | Một người dùng trong MVP | Career Context | MVP chỉ phục vụ một người dùng duy nhất | Thiết kế multi-user sau MVP |
 | BR-002 | Onboarding là prerequisite | Onboarding, Today | Career Context phải được tạo trước khi dùng Today | Chuyển đến Onboarding |
 | BR-003 | Một Current Focus đang hoạt động | Current Focus | Mỗi thời điểm chỉ một trọng tâm | Archive Focus cũ, tạo Focus mới |
-| BR-004 | Một Primary Mission mỗi ngày | Mission | One Main Focus At A Time | Tự động chuyển Mission thứ hai thành Supporting |
+| BR-004 | Một Primary Mission mỗi ngày | Mission | One Main Focus At A Time | Chặn tạo Primary Mission thứ hai, yêu cầu người dùng chọn loại Mission |
 | BR-005 | Tối đa hai Supporting Missions mỗi ngày | Mission | Giới hạn thời gian học | Từ chối Mission thứ ba |
 | BR-006 | Mission Ready phải đủ requirement | Mission | Đảm bảo Mission có thể thực hiện | Không cho Ready nếu thiếu output/evidence/criteria |
 | BR-007 | Chỉ một Active Learning Session | Learning Session | Tránh rối loạn phiên | Kết thúc phiên trước khi bắt đầu mới |
-| BR-008 | Session không chứng minh hoàn thành | Learning Session | Thời gian học không bằng năng lực | Cần Output và Evidence để Completed |
+| BR-008 | Session không chứng minh hoàn thành | Learning Session | Thời gian học không bằng năng lực | Mission Completed chỉ khi có Output, Evidence, Completion Criteria đáp ứng và Review Passed |
 | BR-009 | Một Daily Report hiện hành mỗi ngày | Daily Report | Tránh báo cáo trùng lặp | Chặn tạo Daily Report thứ hai |
 | BR-010 | Submit không ghi đè | Daily Report | Bảo vệ bản ghi đã nộp | Tạo Revision thay vì ghi đè |
 | BR-011 | Mission Completion cần Review Passed | Mission, Review | Bảo vệ chất lượng | Không cho Completed nếu chưa Review Passed |
@@ -602,7 +602,7 @@ Ngoài ra:
 | Roadmap | Có | Khi chưa có phụ thuộc Week Plan | Khi điều chỉnh sau Weekly Review | Khi thay thế bởi Roadmap mới | Không | Có |
 | Roadmap Revision | Không | Không sửa | Luôn tạo mới khi có thay đổi | Khi không còn dùng | Không | Có |
 | Week Plan | Có | Khi Planned, trước khi bắt đầu tuần | Khi thay đổi sau tuần bắt đầu | Khi tuần kết thúc | Không | Có |
-| Mission | Có | Khi Draft hoặc Ready (chưa có Session) | Khi rework (tạo Attempt mới) | KhiCompleted | Không | Có |
+| Mission | Có | Khi Draft hoặc Ready (chưa có Session) | Khi rework (tạo Attempt mới) | Khi Completed | Không | Có |
 | Mission Attempt | Không | Khi New (chưa review) | Luôn tạo mới cho mỗi lần thực hiện | Khi Attempt kết thúc | Không | Có |
 | Learning Session | Có | Khi Planned hoặc Active | Không | Khi Completed/Abandoned | Chỉ khi Planned | Có |
 | Daily Report | Có | Khi Draft | Khi sửa sau Submit | Khi Reviewed | Không | Có |
@@ -657,7 +657,7 @@ Ví dụ: Career Context → Roadmap → Week Plan → Mission → Mission Attem
 
 **Roadmap**
 
-- **Dữ liệu được tạo**: Mục tiê, trọng tâm, kết quả, thứ tự ưu tiên từ Career Context.
+- **Dữ liệu được tạo**: Mục tiêu, trọng tâm, kết quả, thứ tự ưu tiên từ Career Context.
 - **Dữ liệu tham chiếu**: Career Goal, Current Focus.
 - **Trạng thái thay đổi**: Active → Archived (khi revision tạo roadmap mới).
 - **History được giữ**: Roadmap Revision lưu mỗi lần thay đổi.
@@ -674,7 +674,7 @@ Ví dụ: Career Context → Roadmap → Week Plan → Mission → Mission Attem
 - **Dữ liệu được tạo**: Mục tiêu, output, evidence, tiêu chí, loại Primary/Supporting.
 - **Dữ liệu tham chiếu**: Week Plan (khung Mission).
 - **Trạng thái thay đổi**: Draft → Ready → In Progress → Submitted → Completed.
-- **History được giữ**: Mission Attempted, Mission Rework được giữ.
+- **History được giữ**: Mission Attempt, Mission Rework được giữ.
 
 **Mission Attempt**
 
@@ -728,14 +728,14 @@ Ví dụ: Career Context → Roadmap → Week Plan → Mission → Mission Attem
 **Weekly Review**
 
 - **Dữ liệu được tạo**: Mission summary, Session summary, Output summary, Evidence summary, Weakness lặp lại, Skill changes, Data Completeness.
-- **Dữ liệu tham chiáu**: Daily Report trong tuần, Review, Skill.
+- **Dữ liệu tham chiếu**: Daily Report trong tuần, Review, Skill.
 - **Trạng thái thay đổi**: Review Due → Reviewed.
 - **History được giữ**: Weekly Review và revision được lưu.
 
 **Roadmap Revision**
 
 - **Dữ liệu được tạo**: Thay đổi trọng tâm, kết quả, thứ tự ưu tiên.
-- **Dữ liệu tham chiáu**: Weekly Review.
+- **Dữ liệu tham chiếu**: Weekly Review.
 - **Trạng thái thay đổi**: Draft → Final.
 - **History được giữ**: Mỗi lần điều chỉnh tạo một Revision.
 
